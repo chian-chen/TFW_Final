@@ -18,7 +18,7 @@ r = exp(1i .* t.^2 / 2 + 1i .* 6 .* t) .* exp( -1 .* (t - 4).^2 / 10);
 % Ambiguity Function
 % ===================
 
-y = Ambiguity(s, t, f);
+y = Ambiguity(s + r, t, f);
 
 y = y.';
 figure;
@@ -57,8 +57,15 @@ title('STFT of x(t)','Fontsize',12);
 
 y = y .* Filter;
 
-% ================
-% To WDF (Failed)
-% ================
+% =======
+% To WDF
+% =======
 
+% =================================================
+% Find the B and C in p.185 B for eta and C for tau
+% =================================================
+
+% =======
+% Failed
+% =======
 

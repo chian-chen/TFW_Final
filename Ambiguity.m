@@ -17,8 +17,9 @@ function y = Ambiguity(x, t, f)
     
     for p = 1:P
         
+        % in this case, 1001 is the place t = 0
         pp = p;
-        if(pp > 1001)
+        if(p > 1001)
             pp = pp - 1001;
         else
             pp = 1001 - pp;
@@ -28,7 +29,11 @@ function y = Ambiguity(x, t, f)
         c1 = zeros(1, N);
         
         for n = 0 : Q
-            c1(n + 1) = x(n + n1 + 2 * pp) * conj(x(n + n1));
+            if(p > 1001)
+                c1(n + 1) = x(n + n1 + 2 * pp) * conj(x(n + n1));
+            else
+                c1(n + 1) = x(n + n1) * conj(x(n + n1 + 2 * pp));
+            end
         end
 
         C = fft(c1);
